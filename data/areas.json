@@ -1,0 +1,22 @@
+[
+  { "label": "Mont Kiara", "value": "mont-kiara" },
+  { "label": "KLCC", "value": "klcc" },
+  { "label": "Bangsar", "value": "bangsar" },
+  { "label": "Bangsar South", "value": "bangsar-south" },
+  { "label": "KL Sentral", "value": "kl-sentral" },
+  { "label": "Kuala Lumpur", "value": "kuala-lumpur" },
+  { "label": "Petaling Jaya", "value": "petaling-jaya" },
+  { "label": "Subang Jaya", "value": "subang-jaya" },
+  { "label": "Puchong", "value": "puchong" },
+  { "label": "Cyberjaya", "value": "cyberjaya" },
+  { "label": "Cheras", "value": "cheras" },
+  { "label": "Ampang", "value": "ampang" },
+  { "label": "Setapak", "value": "setapak" },
+  { "label": "Wangsa Maju", "value": "wangsa-maju" },
+  { "label": "Sentul", "value": "sentul" },
+  { "label": "Dutamas", "value": "dutamas" },
+  { "label": "Segambut", "value": "segambut" },
+  { "label": "Damansara", "value": "damansara" },
+  { "label": "Old Klang Road", "value": "old-klang-road" },
+  { "label": "Jalan Ipoh", "value": "jalan-ipoh" }
+]
