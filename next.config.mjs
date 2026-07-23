@@ -5,9 +5,6 @@ const nextConfig = {
     // Never let a broken build slip through silently.
     ignoreBuildErrors: false,
   },
-  eslint: {
-    ignoreDuringBuilds: false,
-  },
 };
 
 export default nextConfig;
