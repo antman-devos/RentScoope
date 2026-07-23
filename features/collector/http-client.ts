@@ -53,9 +53,28 @@ async function getContext(): Promise<BrowserContext> {
   if (!browserPromise) {
     browserPromise = chromium.launch({
       headless: true,
-      // Required to run headless Chromium as root in this kind of
-      // containerized environment.
-      args: ["--no-sandbox"],
+      args: [
+        // Required to run headless Chromium as root in this kind of
+        // containerized environment.
+        "--no-sandbox",
+        // The next several flags reduce Chromium's memory footprint —
+        // important on memory-constrained hosts (e.g. Render's free
+        // tier, 512MB RAM total for the whole Node process + browser).
+        // --disable-dev-shm-usage in particular matters most: many
+        // containers give /dev/shm only 64MB by default, and Chromium
+        // uses shared memory heavily; too little of it causes crashes
+        // independent of how much total RAM is free.
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-extensions",
+        "--disable-background-networking",
+        "--disable-default-apps",
+        "--disable-sync",
+        "--disable-translate",
+        "--metrics-recording-only",
+        "--mute-audio",
+        "--no-first-run",
+      ],
     });
   }
   const browser = await browserPromise;

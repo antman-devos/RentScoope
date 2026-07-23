@@ -33,6 +33,24 @@ const ERROR_STATUS: Record<CollectionError["code"], number> = {
  * needs for the listings table and exports.
  */
 export async function GET(request: Request) {
+  try {
+    return await handleCollect(request);
+  } catch (err) {
+    // Last-resort safety net — every expected failure path already
+    // returns a typed CollectionError before this point (see
+    // collector.ts / normalizer.ts), so reaching here means something
+    // genuinely unexpected happened (e.g. Playwright/Chromium itself
+    // crashing). Logged here so it's visible in server logs instead
+    // of silently becoming an opaque 500.
+    console.error("Unhandled error in /api/collect:", err);
+    return errorResponse(
+      { code: "UNEXPECTED_ERROR", message: "Something went wrong while collecting listings." },
+      500,
+    );
+  }
+}
+
+async function handleCollect(request: Request): Promise<Response> {
   const { searchParams } = new URL(request.url);
   const areaParam = searchParams.get("area")?.trim();
   const urlParam = searchParams.get("url")?.trim();
